@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator LoadLevel()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
 
         GameObject.Find("Fade").GetComponent<Animator>().SetTrigger("FadeOut");
 
