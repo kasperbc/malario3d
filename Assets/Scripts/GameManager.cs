@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -69,5 +70,16 @@ public class GameManager : MonoBehaviour
         tokenCollected = true;
 
         tokenIndicator.GetComponent<Image>().sprite = tokenSprite;
+    }
+
+    public IEnumerator LoadLevel()
+    {
+        yield return new WaitForSeconds(1);
+
+        GameObject.Find("Fade").GetComponent<Animator>().SetTrigger("FadeOut");
+
+        yield return new WaitForSeconds(2);
+
+        SceneManager.LoadScene("Level2");
     }
 }

@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class CoinBehaviour : MonoBehaviour
 {
+    enum CoinType { Coin, Token, Gem }
+
     public int value;
     public bool specialItem;
     public bool invisible;
     [SerializeField] Material invisMat;
-    [SerializeField] bool token;
+    [SerializeField] CoinType coinType;
     [SerializeField] float revealRange;
     private void Start()
     {
@@ -84,9 +86,13 @@ public class CoinBehaviour : MonoBehaviour
             yield return new WaitForSeconds(0.75f);
         }
 
-        if (token)
+        if (coinType == CoinType.Token)
         {
             GameManager.instance.CollectToken();
+        }
+        if (coinType == CoinType.Gem)
+        {
+            StartCoroutine(GameManager.instance.LoadLevel());
         }
 
         GetComponent<Renderer>().enabled = false;

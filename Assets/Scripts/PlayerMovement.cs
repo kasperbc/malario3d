@@ -54,10 +54,16 @@ public class PlayerMovement : MonoBehaviour
         playerBottom = new Vector3(transform.position.x, transform.position.y - transform.localScale.y / 2, transform.position.z);
         onGround = Physics.CheckSphere(playerBottom, 0.33f, 3);
 
+                Vector3 forPos = transform.position + transform.forward;
+
+                Debug.DrawLine(transform.position, forPos);
         if (Input.GetButtonDown("Jump") && onGround && !godMode)
         {
             if (!longJump)
             {
+                Collider[] colliders = Physics.OverlapSphere(transform.position, 1);
+
+
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
             else
@@ -223,8 +229,6 @@ public class PlayerMovement : MonoBehaviour
         //
 
         targetRotPos = Vector3.MoveTowards(targetRotPos, transform.position + movement * 10, 1);
-
-        Debug.DrawLine(transform.position, targetRotPos, Color.red);
 
         transform.LookAt(targetRotPos);
 
