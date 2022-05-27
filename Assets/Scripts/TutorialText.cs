@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TutorialText : MonoBehaviour
 {
-    TextMesh textColor;
+    TextMeshPro textColor;
     [SerializeField] float appearDistance;
     void Start()
     {
-        textColor = GetComponent<TextMesh>();
+        textColor = GetComponent<TextMeshPro>();
     }
 
     // Update is called once per frame
