@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public bool tokenCollected;
     GameObject tokenIndicator;
     [SerializeField] Sprite tokenSprite;
+    [SerializeField] bool pauseDisabled;
     void Start()
     {
         paused = false;
@@ -43,7 +44,7 @@ public class GameManager : MonoBehaviour
         // PAUSE
         //
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !pauseDisabled)
         {
             paused = !paused;
         }
@@ -72,7 +73,7 @@ public class GameManager : MonoBehaviour
         tokenIndicator.GetComponent<Image>().sprite = tokenSprite;
     }
 
-    public IEnumerator LoadLevel()
+    public IEnumerator LoadLevel(string name)
     {
         yield return new WaitForSeconds(0.5f);
 
@@ -80,6 +81,6 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(2);
 
-        SceneManager.LoadScene("Level2");
+        SceneManager.LoadScene(name);
     }
 }

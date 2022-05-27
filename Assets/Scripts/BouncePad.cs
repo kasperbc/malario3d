@@ -5,6 +5,7 @@ using UnityEngine;
 public class BouncePad : MonoBehaviour
 {
     public float bounceForce;
+    public float minVelocitySustain;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,7 +15,7 @@ public class BouncePad : MonoBehaviour
 
             print(playerRB.velocity.magnitude);
 
-            if (playerRB.velocity.magnitude < 20)
+            if (playerRB.velocity.magnitude < minVelocitySustain)
                 playerRB.velocity = Vector3.zero;
             else if (playerRB.velocity.y < 0)
                 playerRB.velocity = new Vector3(playerRB.velocity.x, 0, playerRB.velocity.z);

@@ -92,7 +92,7 @@ public class CoinBehaviour : MonoBehaviour
         }
         if (coinType == CoinType.Gem)
         {
-            StartCoroutine(GameManager.instance.LoadLevel());
+            StartCoroutine(GameManager.instance.LoadLevel("Hub"));
         }
 
         GetComponent<Renderer>().enabled = false;

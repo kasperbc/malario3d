@@ -55,7 +55,6 @@ public class PlayerMovement : MonoBehaviour
         playerBottom = new Vector3(transform.position.x, transform.position.y - transform.localScale.y / 2, transform.position.z);
         onGround = Physics.CheckSphere(playerBottom, 0.33f, 3);
 
-
         bool objectInFront = Physics.Linecast(transform.position, transform.position + transform.forward);
 
         if (Input.GetButtonDown("Jump") && onGround && !godMode)
