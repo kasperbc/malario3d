@@ -14877,6 +14877,14 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2478968570607810955, guid: a0bdfbf909432ed43b694370877dd678, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2478968570607810955, guid: a0bdfbf909432ed43b694370877dd678, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3457833275635459742, guid: a0bdfbf909432ed43b694370877dd678, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -14972,6 +14980,10 @@ PrefabInstance:
     - target: {fileID: 4166255372349390077, guid: a0bdfbf909432ed43b694370877dd678, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6401816313844442593, guid: a0bdfbf909432ed43b694370877dd678, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0bdfbf909432ed43b694370877dd678, type: 3}

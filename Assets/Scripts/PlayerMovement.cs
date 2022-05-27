@@ -44,9 +44,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (dead)
         {
-            canMove = false;
+            DisableMovement();
             return;
         }
+
         //
         // JUMP
         //
@@ -54,16 +55,19 @@ public class PlayerMovement : MonoBehaviour
         playerBottom = new Vector3(transform.position.x, transform.position.y - transform.localScale.y / 2, transform.position.z);
         onGround = Physics.CheckSphere(playerBottom, 0.33f, 3);
 
-                Vector3 forPos = transform.position + transform.forward;
 
-                Debug.DrawLine(transform.position, forPos);
+        bool objectInFront = Physics.Linecast(transform.position, transform.position + transform.forward);
+
         if (Input.GetButtonDown("Jump") && onGround && !godMode)
         {
             if (!longJump)
             {
-                Collider[] colliders = Physics.OverlapSphere(transform.position, 1);
+                if (objectInFront)
+                {
+                    DisableMovement();
 
-
+                    Invoke(nameof(EnableMovement), 0.33f);
+                }
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
             else
@@ -249,5 +253,15 @@ public class PlayerMovement : MonoBehaviour
             sprintSpeed = 0;
             moveSpeed = defaultMoveSpeed;
         }
+    }
+
+    void DisableMovement()
+    {
+        canMove = false;
+    }
+    
+    void EnableMovement()
+    {
+        canMove = true;
     }
 }
